@@ -89,7 +89,7 @@ export default function Weather() {
           </div>
         </div>
         <div className="opn">
-            <a href="www.google.com">Open-source project - Coded by Bita H.</a>
+            <a href="https://github.com/BitaHm/react-weather">Open-source project - Coded by Bita H.</a>
       </div>
       </div>
     </div>
