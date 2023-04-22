@@ -35,8 +35,12 @@
 .btn:hover {
   color: white;
 }
-
-
+.btn {
+  color: white;
+}
+.btn::after {
+  color: white;
+}
 a {
   text-decoration: none;
 }
@@ -84,4 +88,8 @@ img {
   width: 30%;
   display: inline-block;
 
+}
+
+input {
+  color: white;
 }
