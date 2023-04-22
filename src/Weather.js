@@ -23,7 +23,7 @@ export default function Weather(props) {
       MaxTemp : response.data.main.temp_max,
       MinTemp : response.data.main.temp_min,
       DateTime : new Date(response.data.dt * 1000),
-      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      icon: response.data.weather[0].icon
     })
 
    }
