@@ -25,7 +25,7 @@ export default function WeatherInfo(props){
       </div>
 
       <p className="mb-2">
-        Current temperature: <strong id="current-temp">{Math.round(props.data.Temperature)} <a href="#" id="toCelesius">°C </a><a href="#" id="toFaranheit">| °F</a></strong>
+        Current temperature: <strong id="current-temp">{Math.round(props.data.Temperature)} <span id="toCelesius">°C </span><span id="toFaranheit">| °F</span></strong>
       </p>
       <p className="mb-2">
         Wind Speed: <strong id="wind-speed">{Math.round(props.data.Wind)} km/hr </strong>
