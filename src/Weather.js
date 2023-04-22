@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Style.css";
 import './mdb.min.css';
-import Video from "./Video"
 import axios from "axios"
 
 import WeatherInfo from "./WeatherInfo";
@@ -9,6 +8,7 @@ import WeatherInfo from "./WeatherInfo";
 export default function Weather(props) {
   
   const [weatherData, setWeatherData] = useState({ ready:false });
+  const [city, setCity] = useState(props.defaultCity)
 
   function handleResponse(response) { 
     console.log(response.data);
@@ -23,11 +23,28 @@ export default function Weather(props) {
       MaxTemp : response.data.main.temp_max,
       MinTemp : response.data.main.temp_min,
       DateTime : new Date(response.data.dt * 1000),
-      iconUrl: "https://cdn-icons-png.flaticon.com/512/252/252035.png"
+      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     })
 
    }
 
+   function search (){
+    const apiKey = "db76eb94032db381b6033ef59e08505b";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+  
+    axios.get(apiUrl).then(handleResponse);
+   }
+   function handleSubmit(event) {
+
+    event.preventDefault()
+    search()
+    
+    }
+
+    function handleCityChange(event){
+      setCity(event.target.value)
+    }
+    
 
   if(weatherData.ready){  return (
 
@@ -40,8 +57,9 @@ export default function Weather(props) {
               Check the Weather Forecast
             </h3>
 
+
             <div className="button-container input-group rounded mb-3">
-              <from className="searchForm">
+              <form className="searchForm" onSubmit={handleSubmit}>
               <input
                 type="search"
                 className="form-control rounded"
@@ -49,9 +67,10 @@ export default function Weather(props) {
                 aria-label="Search"
                 aria-describedby="search-addon"
                 id="search-field"
+                onChange={handleCityChange}
               />
               <input value={"Search"} className="btn btn-primary form-control rounded" id="searchButton" type="submit" href="#!"/>
-              </from>
+              </form>
             </div>
             <WeatherInfo data={weatherData}/>
           
@@ -64,11 +83,8 @@ export default function Weather(props) {
     </div>
   );}else{
     
-  const apiKey = "db76eb94032db381b6033ef59e08505b";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`
 
-  axios.get(apiUrl).then(handleResponse);
-
+    search()
   return "Loading..."
 }
 
