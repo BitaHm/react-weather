@@ -29,8 +29,8 @@ export default function WeatherInfo(props){
       <p className="mb-2">
         
        <div>
-       Current temperature: <strong id="current-temp">{Math.round(props.data.Temperature)}
-       <Conversions className="conversions" celsius={props.data.Temperature} />
+       Current temperature: <strong id="current-temp">
+       <Conversions celsius={props.data.Temperature} />
       </strong>  
       
         </div> 
@@ -44,6 +44,7 @@ export default function WeatherInfo(props){
         Humidity: <strong id="air-humidity">{Math.round(props.data.Humidity)}% </strong>
       </p>
       <p>
+ 
         Feels like: <strong id="feels-like">{Math.round(props.data.FeelsLike)}°C</strong>
       </p>
       <p>
