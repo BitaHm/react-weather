@@ -3,6 +3,7 @@ import "./Style.css";
 import './mdb.min.css';
 import Video from "./Video"
 import axios from "axios"
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   
@@ -20,7 +21,7 @@ export default function Weather(props) {
       Description : response.data.weather[0].description,
       MaxTemp : response.data.main.temp_max,
       MinTemp : response.data.main.temp_min,
-      DateTime : "Monday Sucks",
+      DateTime : new Date(response.data.dt * 1000),
       iconUrl: "https://cdn-icons-png.flaticon.com/512/252/252035.png"
     })
 
@@ -62,9 +63,11 @@ export default function Weather(props) {
                   <div className="col-6">
                     <h4 className="mb-1 sfw-normal">{weatherData.City}</h4>
 
-                    <p className="mb-2" id="dayTime">
-                      Time: <strong>{weatherData.DateTime}</strong>
-                    </p>
+                    <div className="mb-2" id="dayTime">
+                      <span>
+                        <FormattedDate date={weatherData.DateTime}/>
+                        </span>
+                    </div>
                   </div>
                   <div className="col-6">
                     <img className="icon-div" id="current-icon" src={weatherData.iconUrl} alt={weatherData.Description} />
