@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Video from "./Video"
 
 import "./Style.css";
 import Weather from "./Weather";
@@ -9,8 +8,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Video />
-    <Weather />
+    <Weather defaultCity="Tehran"/>
   </React.StrictMode>
 );
 

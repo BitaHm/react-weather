@@ -7,6 +7,7 @@
 .title {
   color: aliceblue;
   text-align: center;
+  text-shadow: 8px 10px 10px black;
 }
 
 #search-field {
@@ -41,9 +42,12 @@ a {
   text-decoration: none;
 }
 
-.container {
-  background-color: rgb(19, 47, 86);
+body{
+  background-image: url("https://images.pexels.com/photos/7244503/pexels-photo-7244503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-size:cover;  
+  height: 100%;
 }
+
 
 .opn{
   color: white;
@@ -57,4 +61,14 @@ a {
 
 .opn a:hover{
   color: lightskyblue;
+}
+
+img {
+  width: 60px;
+  height: 60px;
+}
+
+.icon-div{
+  float: right;
+  margin-right: 4%;
 }
