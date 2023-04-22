@@ -19,8 +19,8 @@ export default function Conversions(props){
 
     if (unit === "celsius"){
         return(
-            <div className="conversions">
-                 <div className="WeatherTemperature">
+        <div className="conversions">
+        <div className="WeatherTemperature">
           <span className="temperature">{Math.round(props.celsius)}</span>
           <span className="unit">°C |</span> <a onClick={ShowF} href="/">°F</a>
         </div>
