@@ -3,7 +3,8 @@ import "./Style.css";
 import './mdb.min.css';
 import Video from "./Video"
 import axios from "axios"
-import FormattedDate from "./FormattedDate";
+
+import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
   
@@ -31,7 +32,7 @@ export default function Weather(props) {
   if(weatherData.ready){  return (
 
     <div className="container">
-        <Video />
+
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-md-8 col-lg-6 col-xl-4">
@@ -40,64 +41,20 @@ export default function Weather(props) {
             </h3>
 
             <div className="button-container input-group rounded mb-3">
+              <from className="searchForm">
               <input
                 type="search"
                 className="form-control rounded"
-                placeholder="City"
+                placeholder="Search for a City..."
                 aria-label="Search"
                 aria-describedby="search-addon"
                 id="search-field"
               />
-              <a href="#!" type="button">
-                <span
-                  className="btn btn-primary check"
-                  id="searchButton"
-                >
-                  Check!
-                </span>
-              </a>
+              <input value={"Search"} className="btn btn-primary form-control rounded" id="searchButton" type="submit" href="#!"/>
+              </from>
             </div>
-            <div className="card shadow-0 border">
-              <div className="card-body p-4">
-                <div className="row">
-                  <div className="col-6">
-                    <h4 className="mb-1 sfw-normal">{weatherData.City}</h4>
-
-                    <div className="mb-2" id="dayTime">
-                      <span>
-                        <FormattedDate date={weatherData.DateTime}/>
-                        </span>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    <img className="icon-div" id="current-icon" src={weatherData.iconUrl} alt={weatherData.Description} />
-                  </div>
-                </div>
-
-                <p className="mb-2">
-                  Current temperature: <strong id="current-temp">{Math.round(weatherData.Temperature)} <a href="#" id="toCelesius">°C </a><a href="#" id="toFaranheit">| °F</a></strong>
-                </p>
-                <p className="mb-2">
-                  Wind Speed: <strong id="wind-speed">{Math.round(weatherData.Wind)} km/hr </strong>
-                </p>
-                <p className="mb-2">
-                  Humidity: <strong id="air-humidity">{Math.round(weatherData.Humidity)}% </strong>
-                </p>
-                <p>
-                  Feels like: <strong id="feels-like">{Math.round(weatherData.FeelsLike)}°C</strong>
-                </p>
-                <p>
-                  Max: <strong id="high">{Math.round(weatherData.MaxTemp)}°C</strong> , Min:{" "}
-                  <strong id="low"> {Math.round(weatherData.MinTemp)}°C</strong>
-                </p>
-                <div className="d-flex flex-row align-items-center">
-                  <p className="mb-0 me-4 text-capitalize" id="weather-description">
-                    {weatherData.Description}
-                  </p>
-                  <i className="fas fa-cloud fa-3x"></i>
-                </div>
-              </div>
-            </div>
+            <WeatherInfo data={weatherData}/>
+          
           </div>
         </div>
         <div className="opn">
