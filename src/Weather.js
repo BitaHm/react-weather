@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './mdb.min.css';
-import WeatherDailyForecast from "./WeatherDailyForecast"; 
 import axios from "axios"
 import WeatherInfo from "./WeatherInfo";
 
