@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import "./Style.css";
 import './mdb.min.css';
+import WeatherDailyForecast from "./WeatherDailyForecast"; 
 import axios from "axios"
-
 import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
@@ -14,6 +13,7 @@ export default function Weather(props) {
     console.log(response.data);
     setWeatherData({
       ready : true,
+      coord : response.data.coord,
       Temperature : response.data.main.temp,
       City : response.data.name,
       Wind : response.data.wind.speed,
@@ -29,7 +29,7 @@ export default function Weather(props) {
    }
 
    function search (){
-    const apiKey = "db76eb94032db381b6033ef59e08505b";
+    const apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
   
     axios.get(apiUrl).then(handleResponse);
@@ -49,14 +49,12 @@ export default function Weather(props) {
   if(weatherData.ready){  return (
 
     <div className="container">
-
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-md-8 col-lg-6 col-xl-4">
             <h3 className="mb-4 pb-2 fw-normal title">
               Check the Weather Forecast
             </h3>
-
 
             <div className="button-container input-group rounded mb-3">
               <form className="searchForm" onSubmit={handleSubmit}>
@@ -71,15 +69,21 @@ export default function Weather(props) {
               />
               <input value={"Search"} className="btn btn-primary form-control rounded" id="searchButton" type="submit" href="#!"/>
               </form>
+              
             </div>
+            
             <WeatherInfo data={weatherData}/>
           
+
           </div>
+          
         </div>
         <div className="opn">
             <a href="https://github.com/BitaHm/react-weather">Open-source project - Coded by Bita H.</a>
       </div>
+      
       </div>
+      
     </div>
   );}else{
     

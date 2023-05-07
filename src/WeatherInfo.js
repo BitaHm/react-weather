@@ -2,7 +2,7 @@ import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import Conversions from "./Conversions"
-
+import WeatherDailyForecast from "./WeatherDailyForecast"; 
 
 export default function WeatherInfo(props){
     return   (
@@ -58,6 +58,8 @@ export default function WeatherInfo(props){
         <i className="fas fa-cloud fa-3x"></i>
       </div>
     </div>
+    <WeatherDailyForecast coordinates={props.data.coord}/>
   </div>
+  
   </div>)
 }
